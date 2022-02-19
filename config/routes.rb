@@ -13,49 +13,26 @@ Rails.application.routes.draw do
   
   
   namespace :admin do
-    get 'orders/show'
+    root to: "homes#top"
+    resources :orders, only: [:show]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :products, only: [:index, :new, :show, :edit, :create, :update]
   end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'products/index'
-    get 'products/new'
-    get 'products/show'
-    get 'products/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
+  
+  root to: "public/homes#top"
+  get '/about', to: 'public/homes#about'
+  
   namespace :public do
-    get 'deliveries/index'
-    get 'deliveries/edit'
+    
+    resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :index, :show, :check, :complete, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :create, :destroy_all]
+    resources :customers, only: [:show, :edit, :quit, :update, :out, :create]
+    resources :items, only: [:index, :show]
   end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/check'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/quit'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
+  
+ 
 
   
   
