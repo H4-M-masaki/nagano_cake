@@ -1,24 +1,35 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customer = Customer.find(params[:id])#current_customer
+    @customer = current_customer
     
   end
 
   def edit
-    @customer = Customer.find(params[:id]) #current_customer
+    @customer = current_customer
     
   end
   
   def update
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to public_customer_path
+    end
   end
   
-  def create
-    
-  end
   
 
   def quit
+   @customer = current_customer
   end
+  
+  
+  def out
+    
+  end
+  
+  
+  
+  
   
   private
   def customer_params

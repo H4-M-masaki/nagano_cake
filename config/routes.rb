@@ -22,13 +22,14 @@ Rails.application.routes.draw do
   
   root to: "public/homes#top"
   get '/about', to: 'public/homes#about'
-  
+ 
   namespace :public do
-    
+    get "/customers/quit", to: "customers#quit"
+    patch "/customers/out", to: "customers#out"
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :show, :check, :complete, :create]
     resources :cart_items, only: [:index, :update, :destroy, :create, :destroy_all]
-    resources :customers, only: [:show, :edit, :quit, :update, :out, :create]
+    resources :customers, only: [:show, :edit, :update, :create]
     resources :items, only: [:index, :show]
   end
   
