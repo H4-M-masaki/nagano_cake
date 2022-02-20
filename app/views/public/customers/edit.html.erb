@@ -3,13 +3,23 @@
 
 
 <h1>会員情報編集</h1>
-
+<%= form_with model: @customer, url: public_customer_path(@customer.id),  local:true do |f| %>
 <p>氏名</p>
-<p>フリガナ</p>
-<p>郵便番号</p>
-<p>住所</p>
-<p>電話番号</p>
-<p>メールアドレス</p>
+<%= f.text_field :first_name %>
+<%= f.text_field :last_name %>
 
-<p>編集内容を保存　（ボタンにする）</p>　退会する（ボタン化）
-<%= link_to "保存", public_customer_path %>
+<p>フリガナ</p>
+<%= f.text_field :first_name_kana %>
+<%= f.text_field :last_name_kana %>
+<p>郵便番号</p>
+<%= f.text_field :postal_code %>
+<p>住所</p>
+<%= f.text_field :address %>
+<p>電話番号</p>
+<%= f.telephone_field :telephone_number %>
+<p>メールアドレス</p>
+<%= f.email_field :email %>
+
+<%= f.submit "編集内容を保存" %>
+<% end %>
+　退会する（ボタン化）

@@ -7,18 +7,24 @@
 <%# end %>
 
 
+
 登録情報 <%= link_to "編集する", edit_public_customer_path %>
 　編集する（ボタン?を作る）リンク先はcustomer_editのページ
 
 <p>氏名</p>
+<%= @customer.first_name %> <%= @customer.last_name %>
 <p>カナ</p>
+<%= @customer.first_name_kana %> <%= @customer.last_name_kana %>
 <p>郵便番号</p>
+<%= @customer.postal_code %>
 <p>住所</p>
+<%= @customer.address %>
 <p>電話番号</p>
+<%= @customer.telephone_number %>
 <p>メールアドレス</p>
+<%= @customer.email %>
 <p>ここは枠をつける　Bootstrapでつく？</p>
 
 <%= link_to "配送先一覧を見る", public_deliveries_path %>
-<p>配送先　一覧を見る（ここもボタンにする）</p>
+
 <%= link_to "注文一覧を見る", public_orders_path %>
-<p>注文履歴　一覧を見る（ここもボタンにする）</p>

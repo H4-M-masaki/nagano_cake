@@ -12,6 +12,8 @@
 
   <body>
     <header>
+      <h1>LOGO</h1>
+      
       <% if customer_signed_in? %>
       <li>
         <%= link_to "マイページ", public_customer_path(current_customer.id) %>
