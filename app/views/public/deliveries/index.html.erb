@@ -13,11 +13,10 @@
 <% end %>
 
 
-<% @customers.each do |customers| %>
-<%= customers.postal_code %>
-<%= customers.address %>
-<%= customers.first_name %>
-<%= customers.last_name %>
+<% @deliveries.each do |delivery| %>
+<%= delivery.postal_code %>
+<%= delivery.address %>
+<%= delivery.name %>
 <% end %>
-<%= link_to "編集する", edit_public_delivery_path(@customer) %>
+<%= link_to "編集する", edit_public_delivery_path(current_customer) %>
 
