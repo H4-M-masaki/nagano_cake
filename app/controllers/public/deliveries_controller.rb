@@ -21,6 +21,13 @@ class Public::DeliveriesController < ApplicationController
   end
   
   
+  def update
+       @delivery = Delivery.find(params[:id])
+    if @delivery.update(delivery_params)
+      redirect_to public_delivery_path
+    end
+  end  
+  
   private
   
   
