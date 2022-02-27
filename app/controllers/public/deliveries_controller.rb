@@ -5,16 +5,17 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def edit
-    @delivery = current_customer
+    @delivery = Delivery.find(params[:id])
+    @delivery.customer = current_customer
   end
   
   def create
-    @delivery = Delivery.new
+    @delivery = Delivery.new(delivery_params)
     @delivery.customer_id = current_customer.id
     if @delivery.save
-      redirect_to public_deliveries_path ,notice: "新しい配送先を登録しました"
+      redirect_to public_deliveries_path
     else
-      @deliveries = current_customer.deliveries.all
+      @deliveries = Delivery.all
       flash[:alert] = '配送先の登録に失敗しました'
       render :index
     end
@@ -24,14 +25,21 @@ class Public::DeliveriesController < ApplicationController
   def update
        @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
-      redirect_to public_delivery_path
+      redirect_to public_deliveries_path
     end
   end  
+  
+  def destroy
+   @delivery = Delivery.find(params[:id])
+   @delivery.destroy
+   redirect_to public_deliveries_path
+ end
+  
   
   private
   
   
   def delivery_params
-    params.require(:delivery).permit(:name,:address,:postal_code)
+    params.require(:delivery).permit(:name, :address, :postal_code)
   end
 end
