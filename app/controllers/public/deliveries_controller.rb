@@ -33,7 +33,7 @@ class Public::DeliveriesController < ApplicationController
    @delivery = Delivery.find(params[:id])
    @delivery.destroy
    redirect_to public_deliveries_path
- end
+  end
   
   
   private

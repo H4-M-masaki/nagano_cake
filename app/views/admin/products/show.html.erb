@@ -1,2 +1,14 @@
 <h1>Admin::Products#show</h1>
 <p>Find me in app/views/admin/products/show.html.erb</p>
+
+
+<h1>商品詳細</h1>
+
+
+<%= @product.name %>
+
+<%= @product.introduction %>
+
+<%= @product.price %>
+
+<%= link_to "編集する", edit_admin_product_path %>

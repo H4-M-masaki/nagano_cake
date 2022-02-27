@@ -1,4 +1,14 @@
-<h1>LOGO</h1>
+<h1>ジャンル一覧・追加</h1>
 
-<p>商品一覧</p>
+<p>ジャンル名</p>
 
+<%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
+<%= f.text_field :name %>
+<%= f.submit "新規登録" %>
+<% end %>
+
+<p>ジャンル</p>
+<% @genres.each do |genre| %>
+<p><%= genre.name %>
+<%= link_to "編集する", edit_admin_genre_path(genre.id) %></p>
+<% end %>
