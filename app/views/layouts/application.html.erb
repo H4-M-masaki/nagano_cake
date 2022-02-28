@@ -12,7 +12,9 @@
 
   <body>
     <header>
+      <%= link_to  root_path  do %>
       <h1>LOGO</h1>
+      <% end %>
       
       <% if customer_signed_in? %>
       <li>

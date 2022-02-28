@@ -11,4 +11,19 @@
 
 <p>商品一覧(全ｘ件)</p>
 
+<% @products.zip(@genres) do |product, genre| %>
+<p><%= product.id %>
 
+
+<%= link_to public_items_path do %>
+ <%= product.name %>
+<% end %>
+
+<%= product.price %>
+
+<%= genre.name %></p>
+<% end %>
+
+<%= link_to public_items_path do %>
+<p>全ての商品を見る</p>
+<% end %>
