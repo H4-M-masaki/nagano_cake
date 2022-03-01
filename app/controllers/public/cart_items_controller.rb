@@ -3,10 +3,20 @@ class Public::CartItemsController < ApplicationController
     @cart_items = current_customer.cart_items
   end
   
+  def create
+   @cart_item = CartItem.new(cart_item_params)
+   if @cart_item.save
+     redirect_to  public_cart_items_path
+   end
+  end
+  
+  
+  
+  
   
   private
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :customer_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount)
   end
 
   

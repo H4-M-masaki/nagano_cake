@@ -9,7 +9,9 @@
 <%= cart_item.items.name %>
 <%= cart_item.item.with_tax_price %>
 <%= cart_item.item.subtotal %>
-
+<%= cart_item.item.with_tax_price %>
+<%= cart_item.subtotal %>
+<%= @合計金額 += cart_item.subtotal %>
 <% end %>
 
 
