@@ -11,8 +11,9 @@
 <%= @item.price %>
 
 
-<%= form_with model: @cart_item, url: public_cart_items_path  do |f| %>
+<%= form_with model: @cart_item, url: public_cart_items_path, local:true  do |f| %>
   <%= f.select :amount, *[1..10] %>
-  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.hidden_field :item_id, value: @item.id %>
   <%= f.submit "カートに入れる" %>
 <% end %>
+

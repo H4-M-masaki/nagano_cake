@@ -28,6 +28,10 @@ Rails.application.routes.draw do
     patch "/customers/out", to: "customers#out"
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :show, :check, :complete, :create]
+    get "/orders/complete", to: "orders#complete"
+    post "/orders/check", to: "orders#check"
+    
+    
     resources :cart_items, only: [:index, :update, :destroy, :create, :destroy_all]
     resources :customers, only: [:show, :edit, :update, :create]
     resources :items, only: [:index, :show]
