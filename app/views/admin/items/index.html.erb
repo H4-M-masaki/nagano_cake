@@ -1,0 +1,17 @@
+<h1>商品一覧</h1>
+
+<%= link_to "+", new_admin_item_path %>
+
+
+<% @items.zip(@genres) do |item, genre| %>
+<p><%= product.id %>
+
+
+<%= link_to admin_item_path(item.id) do %>
+ <%= item.name %>
+<% end %>
+
+<%= item.price %>
+
+<%= genre.name %></p>
+<% end %>

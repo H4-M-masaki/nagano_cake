@@ -11,15 +11,15 @@
 
 <p>商品一覧(全ｘ件)</p>
 
-<% @products.zip(@genres) do |product, genre| %>
-<p><%= product.id %>
+<% @items.zip(@genres) do |item, genre| %>
+<p><%= item.id %>
 
 
 <%= link_to public_items_path do %>
- <%= product.name %>
+ <%= item.name %>
 <% end %>
 
-<%= product.price %>
+<%= item.price %>
 
 <%= genre.name %></p>
 <% end %>

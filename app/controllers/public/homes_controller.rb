@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @products = Product.all
+    @items = Item.all
     @genres = Genre.all
   end 
   

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :products, only: [:index, :new, :show, :edit, :create, :update]
+    resources :items, only: [:index, :new, :show, :edit, :create, :update]
   end
   
   root to: "public/homes#top"
