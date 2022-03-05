@@ -9,17 +9,39 @@ class Public::CartItemsController < ApplicationController
   def create
    @cart_item = CartItem.new(cart_item_params)
    @cart_item.customer_id = current_customer.id
-  
-  
-   if @cart_item.save
-     redirect_to  public_cart_items_path
-   else
-     @cart_items = current_customer.cart_items
-     @customer = current_customer
-      p @cart_item
-     render :index
+   @cart_items = current_customer.cart_items
+   @cart_items.each do |cart_item|
+     if  @cart_item.item_id == cart_item.item_id
+         cart_item.update(amount: @cart_item.amount + cart_item.amount)
+         @cart_item.delete
+     end
    end
+   if @cart_item
+       @cart_item.save
+   #if @cart_item.save
+    # redirect_to  public_cart_items_path
+  # else
+   #  @total = 0  
+   ##  @customer = current_customer
+   #   p @cart_item
+   #end
+   end
+   redirect_to public_cart_items_path
+
   end
+  
+  def destroy
+   @cart_items = CartItem.find(params[:id])
+   @cart_items.destroy
+   redirect_to public_cart_items_path
+  end
+  
+  def update
+      @cart_items = CartItem.find(params[:id])
+    if @cart_items.update(cart_item_params)
+      redirect_to public_cart_items_path
+    end
+  end  
   
   
   

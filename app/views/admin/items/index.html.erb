@@ -4,7 +4,7 @@
 
 
 <% @items.zip(@genres) do |item, genre| %>
-<p><%= product.id %>
+<p><%= item.id %>
 
 
 <%= link_to admin_item_path(item.id) do %>
@@ -13,5 +13,5 @@
 
 <%= item.price %>
 
-<%= genre.name %></p>
+<%= item.genre.name %></p>
 <% end %>
