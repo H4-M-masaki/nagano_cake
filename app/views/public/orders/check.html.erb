@@ -1,2 +1,22 @@
 <h1>Public::Orders#check</h1>
 <p>Find me in app/views/public/orders/check.html.erb</p>
+
+
+<h1>注文情報確認</h1>
+<p>商品名　　単価　　数量　　小計　</p>
+
+
+<% @cart_items.each do |cart_item| %>
+<%= cart_item.item.name %>
+
+<%= cart_item.item.with_tax_price %>
+<%= cart_item.amount %>
+
+<%= cart_item.subtotal %>
+
+<% @total += cart_item.subtotal %><br>
+<% end %>
+合計金額<%= @total %><br>
+
+<p>支払方法</p>
+<%= order.payment_method %>

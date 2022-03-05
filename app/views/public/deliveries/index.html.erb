@@ -12,13 +12,13 @@
 <%= f.submit "新規登録" %>
 <% end %>
 
-
-<% @deliveries.each do |delivery| %>
 <p>郵便番号　住所　宛名</p>
+<% @deliveries.each do |delivery| %>
+
 <%= delivery.postal_code %>
 <%= delivery.address %>
 <%= delivery.name %>
 
 <%= link_to "編集する", edit_public_delivery_path(delivery.id) %>
-<%= link_to "削除する", public_delivery_path(delivery.id), method: :delete %>
+<%= link_to "削除する", public_delivery_path(delivery.id), method: :delete %><br>
 <% end %>
