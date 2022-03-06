@@ -6,9 +6,13 @@ class Public::OrdersController < ApplicationController
 
   def check
     @cart_items = current_customer.cart_items
-    @customer = current_customer
-    @cart_item = CartItem.new
     @total = 0
+    @order = Order.new(order_params)
+    @delivery = Delivery.find(params[:order][:delivery_id])
+    @order.postal_code = @delivery.postal_code
+    @order.address = @delivery.address
+    @order.name = @delivery.name
+    
   end
 
   def complete
@@ -25,5 +29,5 @@ end
 private
 
  def order_params
-    params.require(:order).permit(:customer_id,:postage,:order_status,:payment_method, :postal_code, :address, :name, :billing_amount)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
  end

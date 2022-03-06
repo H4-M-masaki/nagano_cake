@@ -18,13 +18,6 @@ class Public::CartItemsController < ApplicationController
    end
    if @cart_item
        @cart_item.save
-   #if @cart_item.save
-    # redirect_to  public_cart_items_path
-  # else
-   #  @total = 0  
-   ##  @customer = current_customer
-   #   p @cart_item
-   #end
    end
    redirect_to public_cart_items_path
 
