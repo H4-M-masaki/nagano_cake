@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
+    
   end
 
   def check
@@ -19,3 +20,10 @@ class Public::OrdersController < ApplicationController
   def show
   end
 end
+
+
+private
+
+ def order_params
+    params.require(:order).permit(:customer_id,:postage,:order_status,:payment_method, :postal_code, :address, :name, :billing_amount)
+ end

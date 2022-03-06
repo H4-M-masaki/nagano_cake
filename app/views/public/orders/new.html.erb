@@ -6,10 +6,12 @@
 
 <p>支払い方法</p>
 <%= form_with model: @order, url: public_orders_check_path, local:true do |f| %>
-<p><%= f.radio_button :payment_method, "クレジットカード"  %>
-<%= f.label "クレジットカード" %>
-<%= f.radio_button :payment_method, "銀行振り込み"  %>
-<%= f.label "銀行振り込み" %></p>
+
+<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+
+<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
 
 <p>お届け先</p>
 <p><%= f.radio_button :address, "住所" %>
@@ -19,6 +21,6 @@
 <p><%= f.radio_button :address, "登録済住所" %>
 <%= f.label "登録済住所から選択" %></p>
 
-<%= f.collection_select :address, current_customer.addresses, :id, :address %>
+<%= f.select :delivery_id, options_from_collection_for_select(Delivery.all, :id, :delivery_display) %>
 <%= f.submit "確認画面へ進む" %>
 <% end %>
