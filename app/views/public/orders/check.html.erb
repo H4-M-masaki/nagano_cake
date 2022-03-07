@@ -17,7 +17,12 @@
 
 <% @total += cart_item.subtotal %><br>
 <% end %>
-合計金額<%= @total %><br>
+
+送料<%= @order.postage %><br>
+
+商品合計<%= @total %><br>
+
+請求金額<%= @total + @order.postage %><br>
 
 <p>支払方法</p>
 
