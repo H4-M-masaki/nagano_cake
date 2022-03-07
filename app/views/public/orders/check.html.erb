@@ -28,3 +28,15 @@
 <%= @order.postal_code %>
 <%= @order.address %>
 <%= @order.name %>
+
+<%= form_with model: @order, url: public_orders_path, method: :post, local:true do |f| %>
+<%= f.hidden_field :customer_id %>
+<%= f.hidden_field :payment_method %>
+<%= f.hidden_field :postal_code %>
+<%= f.hidden_field :address %>
+<%= f.hidden_field :name %>
+<%= f.hidden_field :postage %>
+<%= f.hidden_field :billing_amount %>
+<%= f.hidden_field :order_status %>
+<%= f.submit "注文を確定する" %>
+<% end %>

@@ -12,11 +12,16 @@ class Public::OrdersController < ApplicationController
     @order.postal_code = @delivery.postal_code
     @order.address = @delivery.address
     @order.name = @delivery.name
+  end
+  
+  def create
+    @order = Order.new(order_params)
+    @order.save
     
+    redirect_to public_orders_complete_path
   end
+  
 
-  def complete
-  end
 
   def index
   end
@@ -29,5 +34,5 @@ end
 private
 
  def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:customer_id,:payment_method, :postal_code, :address, :name, :postage, :billing_amount, :order_status,)
  end
