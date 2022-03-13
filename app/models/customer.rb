@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
   has_many :deliveries
   
   
-  def full_name
+  def name
       first_name + ' ' + last_name
   end
 

@@ -5,7 +5,7 @@
 
 
 <p>支払い方法</p>
-<%= form_with model: @order, url: public_orders_check_path, local:true do |f| %>
+<%= form_with model: @order, url: public_orders_check_path, method: :post, local:true do |f| %>
 
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
 <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
@@ -14,12 +14,12 @@
 <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
 
 <p>お届け先</p>
-<p><%= f.radio_button :select_delivery, 0 %>
-<%= f.label "ご自身の住所" %></p>
+<%= f.radio_button :delivery_option, 0, checked: true %>
+<%= f.label :delivery_id,"ご自身の住所", value: 0 %>
 <%= current_customer.address %>
 
-<p><%= f.radio_button :select_delivery, 1 %>
-<%= f.label "登録済住所から選択" %></p>
+<%= f.radio_button :delivery_option, 1 %>
+<%= f.label :delivery_id, "登録済住所から選択", value: 1 %>
 
 <%= f.select :delivery_id, options_from_collection_for_select(Delivery.all, :id, :delivery_display) %>
 <%= f.submit "確認画面へ進む" %>

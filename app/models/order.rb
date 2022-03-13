@@ -3,9 +3,15 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details
   
+  accepts_nested_attributes_for :order_details
+  
   def subtotal
     item.with_tax_price * amount
   end
+  
+ 
+  
+  
   
   def delivery_display
       '〒' + postal_code + ' ' + address + ' ' + name

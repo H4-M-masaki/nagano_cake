@@ -21,8 +21,8 @@
 送料<%= @order.postage %><br>
 
 商品合計<%= @total %><br>
-
-請求金額<%= @total + @order.postage %><br>
+<% @order.billing_amount += (@total + @order.postage) %>
+請求金額<%= @order.billing_amount %><br>
 
 <p>支払方法</p>
 
@@ -35,13 +35,19 @@
 <%= @order.name %>
 
 <%= form_with model: @order, url: public_orders_path, method: :post, local:true do |f| %>
-<%= f.hidden_field :customer_id %>
-<%= f.hidden_field :payment_method %>
-<%= f.hidden_field :postal_code %>
-<%= f.hidden_field :address %>
-<%= f.hidden_field :name %>
-<%= f.hidden_field :postage %>
-<%= f.hidden_field :billing_amount %>
-<%= f.hidden_field :order_status %>
+<%= f.hidden_field :customer_id, :value => current_customer.id %>
+<%= f.hidden_field :payment_method, :value => @order.payment_method %>
+<%= f.hidden_field :postal_code, :value => @order.postal_code %>
+<%= f.hidden_field :address, :value => @order.address %>
+<%= f.hidden_field :name, :value => @order.name %>
+<%= f.hidden_field :postage, :value => @order.postage %>
+<%= f.hidden_field :billing_amount, :value => @order.billing_amount %>
+<%= f.hidden_field :order_status, :value => @order.order_status %>
+
+
+
+
+
+
 <%= f.submit "注文を確定する" %>
 <% end %>
