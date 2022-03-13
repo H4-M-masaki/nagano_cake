@@ -43,13 +43,13 @@ class Public::OrdersController < ApplicationController
 
 
   def index
-    @orders = current_customer.orders.all
-    
-    
+    @orders = Order.all
+   
   end
 
   def show
     @order = Order.find(params[:id])
+    
   end
 
 
@@ -59,6 +59,8 @@ private
  def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :postage, :delivery_id, :customer_id, :billing_amount, :order_status )
  end
+ 
+  
 
 end
  

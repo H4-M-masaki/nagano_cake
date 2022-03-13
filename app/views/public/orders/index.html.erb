@@ -11,9 +11,14 @@
  <%= order.created_at.strftime('%Y/%m/%d') %>
  〒<%= order.postal_code %> <%= order.address %> 
  
+ <% order.order_details.each do |order_detail| %>
+ <%= order_detail.item.name %>
+ <% end %>
+ 
 
  <%= order.billing_amount %>
  <%= link_to "表示する", public_order_path(order.id) %><br>
 
  
  <% end %>
+ 
