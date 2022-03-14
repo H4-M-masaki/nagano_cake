@@ -10,7 +10,6 @@ class Public::OrdersController < ApplicationController
     @total = 0
     @order = Order.new(order_params)
     #binding.pry
-    
     @order.postage = 800
     @order.billing_amount = @total + @order.postage
     @order_details = OrderDetail.new
@@ -23,6 +22,10 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @delivery.postal_code
       @order.address = @delivery.address
       @order.name = @delivery.name
+    elsif params[:order][:delivery_option] == '2'
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
     end
   end
   
@@ -43,8 +46,8 @@ class Public::OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.all
-   
+    @orders = current_customer.orders
+    @customer = current_customer
   end
 
   def show

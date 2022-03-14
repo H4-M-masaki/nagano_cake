@@ -16,11 +16,27 @@
 <p>お届け先</p>
 <%= f.radio_button :delivery_option, 0, checked: true %>
 <%= f.label :delivery_id,"ご自身の住所", value: 0 %>
-<%= current_customer.address %>
-
+〒<%= current_customer.postal_code %> <%= current_customer.address %> <%= current_customer.name %><br>
 <%= f.radio_button :delivery_option, 1 %>
 <%= f.label :delivery_id, "登録済住所から選択", value: 1 %>
 
-<%= f.select :delivery_id, options_from_collection_for_select(Delivery.all, :id, :delivery_display) %>
+<%= f.select :delivery_id, options_from_collection_for_select(Delivery.all, :id, :delivery_display) %><br>
+
+
+
+
+<%= f.radio_button :delivery_option, 2 %>
+<%= f.label :delivery_id, "新しいお届け先", value: 2 %>
+
+
+<p>郵便番号</p>
+<%= f.text_field :postal_code %>
+<p>住所</p>
+<%= f.text_field :address %>
+<p>宛名</p>
+<%= f.text_field :name %>
+
+
+
 <%= f.submit "確認画面へ進む" %>
 <% end %>
