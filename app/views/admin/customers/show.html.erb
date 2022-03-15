@@ -18,10 +18,10 @@
 
 <p>メールアドレス <%= @customer.email %></p>
 
-<p>会員ステータス <% if @customer.is_active == true %>
-                     有効
+<p>会員ステータス <% if @customer.is_deleted == true %>
+                     退会
                    <% else %>
-                   　退会
+                     有効
                    <% end %></p>
 
 <%= link_to "編集する", edit_admin_customer_path %>

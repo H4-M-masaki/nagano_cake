@@ -4,7 +4,7 @@
 
 <h1>会員情報編集</h1>
 
-<p>会員ID　<%= @customer.id %></p>
+<p>会員ID <%= @customer.id %></p>
 
 <%= form_with model: @customer, url: admin_customer_path(@customer.id),  local:true do |f| %>
 <p>
@@ -34,6 +34,11 @@
 <p>
   メールアドレス
   <%= f.email_field :email %>
+</p>
+<p>
+  会員ステータス
+  <%= f.radio_button :is_deleted, :true %>退会
+  <%= f.radio_button :is_deleted, :false %>有効
 </p>
 
 <%= f.submit "編集内容を保存" %>
