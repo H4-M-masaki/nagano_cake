@@ -10,5 +10,11 @@
 <%= link_to admin_customer_path(customer.id) do %>
 <%= customer.first_name + customer.last_name %>
 <% end %>
-<%= customer.email %></p>
+<%= customer.email %>
+
+<% if customer.is_deleted == true %>
+退会
+<% else %>
+有効
+<% end %></p>
 <% end %>
