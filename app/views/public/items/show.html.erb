@@ -8,7 +8,7 @@
 
 <%= @item.introduction %>
 
-￥<%= @item.price %>（税込）
+￥<%= @item.with_tax_price %>（税込）
 
 
 <%= form_with model: @cart_item, url: public_cart_items_path, local:true  do |f| %>
