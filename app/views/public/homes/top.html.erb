@@ -12,16 +12,20 @@
 <p>商品一覧(全ｘ件)</p>
 
 <% @items.zip(@genres) do |item, genre| %>
-<p><%= item.id %>
+<p>
+  <% if item.image.attached? %>
+    <%= image_tag item.image, size: "50x50" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "50x50" %>
+  <% end %>
 
-
-<%= link_to public_items_path do %>
+<%= link_to public_item_path(item.id) do %>
  <%= item.name %>
 <% end %>
 
-<%= item.price %>
+<%= item.price %>円
 
-<%= genre.name %></p>
+<%#= item.genre.name %></p>
 <% end %>
 
 <%= link_to public_items_path do %>

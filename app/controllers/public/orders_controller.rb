@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     #binding.pry
     @order.postage = 800
-    @order.billing_amount = @total + @order.postage
+    @order.billing_amount = @total 
     @order_details = OrderDetail.new
     if params[:order][:delivery_option] == '0'
       @order.postal_code = current_customer.postal_code

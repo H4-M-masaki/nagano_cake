@@ -1,8 +1,12 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
 
 
 <h1>商品詳細ページ</h1>
+
+<% if @item.image.attached? %>
+  <%= image_tag @item.image, size: "50x50" %>
+<% else %>
+  <%= image_tag 'no_image', size: "50x50" %>
+<% end %>
 
 <%= @item.name %>
 

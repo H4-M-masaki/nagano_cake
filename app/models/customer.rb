@@ -10,6 +10,8 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :deliveries
   
+ 
+  
   
   def name
       first_name + ' ' + last_name
