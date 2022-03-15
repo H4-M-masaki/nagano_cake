@@ -7,7 +7,7 @@
 購入日時　購入者　注文個数　　注文ステータス<br>
 
 <% @orders.each do |order| %>
-<%= link_to admin_order_path(order.customer.id) do %>
+<%= link_to admin_order_path(order.id) do %>
 <%= order.created_at.strftime('%Y/%m/%d') %>
 <% end %>
 <%= order.name %>
