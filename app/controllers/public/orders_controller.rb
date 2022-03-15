@@ -35,6 +35,13 @@ class Public::OrdersController < ApplicationController
     
     @order = Order.new(order_params)
     if @order.save
+      @cart_items.each do |cart_item|
+        order_detail = @order.order_details.new
+        order_detail.item_id = cart_item.item_id
+        order_detail.amount = cart_item.amount
+        order_detail.tax_included_price = cart_item.item.price * 1.1.floor
+        order_detail.save
+      end
       current_customer.cart_items.destroy_all
       redirect_to public_orders_complete_path
     end
