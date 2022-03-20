@@ -24,5 +24,8 @@ module NaganoCake
     config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
     
     
+    config.time_zone = 'Asia/Tokyo'
+    
+  
   end
 end

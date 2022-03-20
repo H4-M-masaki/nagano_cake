@@ -13,7 +13,7 @@
 <p>税抜価格</p>
 <%= f.text_field :price %>
 <p>販売ステータス</p>
-<%= f.select :is_active, { "販売中": true, "売り切れ": false } %> 
+<%= f.select :is_active, { "販売中": true, "販売停止中": false } %> 
 
-<%= f.submit "変更を保存" %>
+<%= f.submit "変更を保存", class: "btn btn-success btn-sm" %>
 <% end %>

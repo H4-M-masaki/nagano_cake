@@ -16,18 +16,32 @@
 <%= @order.payment_method_i18n %><br>
 
 
-注文ステータス<br>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+        </tr>
+    </thead>
+    <% @order.order_details.each do |order_detail| %>
+        <tbody>
+            <tr>
+                
+                <td>
+                    <%= order_detail.item.name %>
+                </td>
+                <td><%= order_detail.item.with_tax_price %></td>
+                <td>
+                 <%= order_detail.amount %>
+                </td>
+                <td><%= order_detail.item.with_tax_price * order_detail.amount %></td>
+            </tr>
+        </tbody>
+    <% end %>
+</table>
 
-
-商品名   単価（税込）   数量    小計    製作ステータス<br>
-
-
-<% @order.order_details.each do |order_detail| %>
-<%= order_detail.item.name %>
-<%= order_detail.item.with_tax_price %>
-<%= order_detail.amount %>
-<%= order_detail.item.with_tax_price * order_detail.amount %><br>
-<% end %>
 
 
 商品合計

@@ -1,48 +1,29 @@
 <div class="text-center m-5">
    <h1 class="display-2"class="display-2">topページ</h1>
-
-
-
       <p class="font-weight-bold">ようこそ、ながのCAKEへ</p>
       <p class="font-weight-bold">このサイトは、ケーキ販売のECサイトになります。</p>
       <p class="font-weight-bold">会員でない方も商品の閲覧はできますが、</p>
       <p class="font-weight-bold">購入には会員登録が必要になります。</p>
-      
-   
-      
       <p>商品一覧</p>
-      <div class="container">
-        <div class="row">
-           <% @items.zip(@genres) do |item, genre| %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <%= link_to public_item_path(item.id) do %>
+    <div class="container">
+     <div class="row">
+      <% @items.zip(@genres) do |item, genre| %>
+       <div class="col-lg-3 col-md-6 mb-4">
+         <%= link_to public_item_path(item.id) do %>
           <% if item.image.attached? %>
             <%= image_tag item.image, size: "100x100" %>
           <% else %>
             <%= image_tag 'no_image', size: "100x100" %>
           <% end %>
-         <% end %>
-       
-        
+         <% end %><br>
          <%= item.name %>
-        
-        
-        <%= item.price %>円
-        
+         <%= item.price %>円
         </div>
-        <% end %>
-        
-        </div>
-       </div>
-       
+      <% end %>
+     </div>
+    </div>
       <%= link_to public_items_path do %>
       <p>全ての商品を見る</p>
       <% end %>
-        
-      
-      
-        
-       
-      
   </div>
  

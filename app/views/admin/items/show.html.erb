@@ -1,21 +1,39 @@
 <h1>商品詳細</h1>
 
-商品名
-<%= @item.name %>
-商品説明
-<%= @item.introduction %>
-ジャンル
-<%= @item.genre.name %>
 
-税込価格(税抜き価格)
-<%= @item.with_tax_price %>(<%= @item.price %>)円
+ 
+  
+<div class="container">
+    <div class="row">
+     <div class="col-md-offset-2 col-md-3">
+        <% if @item.image.attached? %>
+         <%= image_tag @item.image, size: "50x50" %>
+        <% else %>
+         <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        商品名
+        <%= @item.name %><br>
+        商品説明
+        <%= @item.introduction %><br>
+        ジャンル
+        <%= @item.genre.name %><br>
+          
+        税込価格(税抜き価格)
+        <%= @item.with_tax_price %>(<%= @item.price %>)円<br>
+          
+        販売ステータス
+        <% if @item.is_active == true %>
+        <div class="text-success font-weight-bold">販売中</div>
+        <% else %>
+        <div class="text-muted font-weight-bold">販売停止中</div>
+        <% end %>
+        <button type="button" class="btn btn-success btn-sm">
+           <%= link_to "編集する", edit_admin_item_path, class: "text-white"  %>
+          </button>
+      </div>
+   </div>
+</div>
 
 
-<% if @item.is_active == true %>
-販売中
-<% else %>
-売り切れ
-<% end %>
-
-
-<%= link_to "編集する", edit_admin_item_path %>
