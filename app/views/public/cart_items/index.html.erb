@@ -1,4 +1,4 @@
-
+<div class="container ml-auto">
  <h1>ショッピングカート</h1> 
  
  
@@ -9,7 +9,6 @@
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
-            <th></th>
         </tr>
     </thead>
     <% @cart_items.each do |cart_item| %>
@@ -27,7 +26,7 @@
                 <td><%= cart_item.item.with_tax_price %></td>
                 <td>
                   <%= form_with model: [:public,cart_item], method: :patch, local: true do |f| %>
-                  <%= f.select :amount, *[1..10] %>
+                  <%= f.select :amount, *[1..100] %>
                    
                    <%= f.submit "変更", class: "btn btn-success btn-sm" %>
                 </td>
@@ -43,27 +42,32 @@
         </tbody>
     <% end %>
 </table>
-
-<table class="table ">
-    <thead>
-        <tr>
-            <th>
-                <div class="text-right">
-                合計金額
-                </div>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <div class="text-right">
-                <%= @total %>円
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+     <div class="row">
+         <div class="pull-right">
+               <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="text-right">
+                                合計金額
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="text-right">
+                            <%= @total %>円
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+     </div>
+</div>
 
 
 <button type="button" class="btn btn-primary btn-sm">
@@ -83,4 +87,4 @@
 <% end %>
 </div>
 
-
+</div>

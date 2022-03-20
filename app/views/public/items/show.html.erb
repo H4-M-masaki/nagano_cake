@@ -1,32 +1,34 @@
-<h1>商品詳細ページ</h1>
-<div class="container">
-  <divi class="row">
-    <div class="col">
-      <div class="item-show">
-       <p>
-          <% if @item.image.attached? %>
-            <%= image_tag @item.image, size: "250x250", class: "m-3" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "250x250", class: "m-3" %>
-          <% end %>
-        </p>
-        <div class="item-information">
-          <p><%= @item.name %></p>
-          <p><%= @item.introduction %></p>
-          <P>￥<%= @item.with_tax_price %>（税込）</P>
-        </div>
-        <% if customer_signed_in? %>
-          <%= form_with model: @cart_item, url: public_cart_items_path, local:true  do |f| %>
-          <%= f.select :amount, *[1..10] %>
-          <%= f.hidden_field :item_id, value: @item.id %>
-          <%= f.submit "カートに入れる", class: "btn btn-success btn-sm" %>
-          <% end %>
-        <% end %>
-        </div>
-    </div>
-  </divi>
-</div>
 
+<div class="container ml-auto">
+    <h1>商品詳細ページ</h1>
+    <div class="container">
+      <divi class="row">
+        <div class="col">
+          <div class="item-show">
+           <p>
+              <% if @item.image.attached? %>
+                <%= image_tag @item.image, size: "250x250", class: "m-3" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "250x250", class: "m-3" %>
+              <% end %>
+            </p>
+            <div class="item-information">
+              <p><%= @item.name %></p>
+              <p><%= @item.introduction %></p>
+              <P>￥<%= @item.with_tax_price %>（税込）</P>
+            </div>
+            <% if customer_signed_in? %>
+              <%= form_with model: @cart_item, url: public_cart_items_path, local:true  do |f| %>
+              <%= f.select :amount, *[1..100] %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.submit "カートに入れる", class: "btn btn-success btn-sm" %>
+              <% end %>
+            <% end %>
+            </div>
+        </div>
+      </divi>
+    </div>
+</div>
 
 
 

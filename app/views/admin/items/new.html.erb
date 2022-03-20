@@ -1,3 +1,5 @@
+
+<div class="container ml-auto">
 <h1>商品新規登録</h1>
 
 <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
@@ -14,6 +16,8 @@
 <p>販売ステータス</p>
 <%= f.select :validation, { "販売中": true, "売り切れ": false } %> 
 
-<%= f.submit "新規登録" %>
+<%= f.submit "新規登録", class: "btn btn-success btn-sm" %>
 
 <% end %>
+
+</div>

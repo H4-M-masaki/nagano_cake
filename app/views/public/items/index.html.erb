@@ -1,24 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col text-center">
-      <h1>商品一覧</h1>
-
+<div class="container ml-auto">
+  <h1>商品一覧</h1>
+     <div class="row">
+       <div class="col-md-5">
         <% @items.zip(@genres) do |item, genre| %>
         <div class="item-all d-inline-block">
-        <%= link_to public_item_path(item.id) do %>
-          <% if item.image.attached? %>
-            <%= image_tag item.image, size: "50x50" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "50x50" %>
-          <% end %>
-        <% end %>
-         <%= item.name %>
-        
-        
-        <%= item.with_tax_price %>円
-        <% end %>
-        
+          <%= link_to public_item_path(item.id) do %>
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "100x100" %>
+            <% end %>
+          <% end %><br>
+           <%= item.name %><br>
+          <%= item.with_tax_price %>円
+          <div class="w-100"></div>
         </div>
+        <% end %>
+        
     </div>
   </div>
 </div>
