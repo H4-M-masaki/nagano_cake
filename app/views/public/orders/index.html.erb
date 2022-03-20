@@ -2,32 +2,60 @@
 
 <h1>注文履歴一覧</h1>
 
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>注文日</th>
+                <th>配送先</th>
+                <th>注文商品</th>
+                <th>支払い金額</th>
+                <th>注文詳細</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+                <th><%= order.created_at.strftime('%Y/%m/%d') %></th>
+                <td>〒<%= order.postal_code %> <%= order.address %></td>
+                <td>
+                 <% order.order_details.each do |order_detail| %>
+                 <%= order_detail.item.name %>
+                 <% end %>
+                </td>
+                <td><%= order.billing_amount %>円</td>
+                <td><%= link_to "表示する", public_order_path(order.id) %></td>
+            </tr>
+            
+            <% end %>
+        </tbody>
+    </table>
 
-<p>注文日　　配送先　　注文商品　　支払い金額　　ステータス　　注文詳細</p>
 
 
- <% @orders.each do |order| %>
- 
- <%= order.created_at.strftime('%Y/%m/%d') %>
- 
- 
- 
- 
- 〒<%= order.postal_code %> <%= order.address %> 
- 
- <% order.order_details.each do |order_detail| %>
- <%= order_detail.item.name %>
- <% end %>
- 
 
- <%= order.billing_amount %>円
- 
- 
- 
- 
- 
- <%= link_to "表示する", public_order_path(order.id) %><br>
+
+
 
  
- <% end %>
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ <br>
+
+ 
+ 
  

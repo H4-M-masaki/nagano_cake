@@ -3,24 +3,73 @@
 
 
 
-登録情報 <%= link_to "編集する", edit_public_customer_path %>
+<div class="font-weight-bold">登録情報
+  <button type="button" class="btn btn-success btn-sm">
+  <%= link_to "編集する", edit_public_customer_path,class: "text-white" %>
+  </button>
+</div>
+
+    <table class="table table-bordered">
+        <tr>
+          <th>
+            氏名
+          </th>
+          <td>
+           <%= @customer.first_name %> <%= @customer.last_name %>
+          </td>
+        </tr>
+       <tr>
+         <th>
+           カナ
+          </th>
+          <td>
+          <%= @customer.first_name_kana %> <%= @customer.last_name_kana %>
+          </td>
+        </tr>
+        <tr>
+         <th>
+          郵便番号
+          </th>
+          <td>
+            <%= @customer.postal_code %>
+          </td>
+        </tr>
+        <tr>
+         <th>
+          住所
+          </th>
+          <td>
+            <%= @customer.address %>
+          </td>
+        </tr>
+        <tr>
+         <th>
+          電話番号
+          </th>
+          <td>
+            <%= @customer.telephone_number %>
+          </td>
+        </tr>
+        <tr>
+         <th>
+          メールアドレス
+          </th>
+          <td>
+            <%= @customer.email %>
+          </td>
+        </tr>
+    </table>
+
+<div class="font-weight-bold">配送先
+  <button type="button" class="btn btn-primary btn-sm">
+  <%= link_to "一覧を見る", public_deliveries_path,class: "text-white" %>
+  </button>
+</div>
 
 
-<p>氏名</p>
-<%= @customer.first_name %> <%= @customer.last_name %> 
-<p>カナ</p>
-<%= @customer.first_name_kana %> <%= @customer.last_name_kana %>
-<p>郵便番号</p>
-<%= @customer.postal_code %>
-<p>住所</p>
-<%= @customer.address %>
-<p>電話番号</p>
-<%= @customer.telephone_number %>
-<p>メールアドレス</p>
-<%= @customer.email %><br/>
 
-
-<p>配送先 <%= link_to "一覧を見る", public_deliveries_path %></p>
-
-<p>注文履歴 <%= link_to "一覧を見る", public_orders_path %></p>
- 
+<div class="font-weight-bold">注文履歴
+  <button type="button" class="btn btn-primary btn-sm">
+  <%= link_to "一覧を見る", public_orders_path,class: "text-white" %>
+  </button>
+</div>
