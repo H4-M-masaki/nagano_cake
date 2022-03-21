@@ -1,7 +1,7 @@
 class Public::DeliveriesController < ApplicationController
   def index
     @delivery = Delivery.new
-    @deliveries = Delivery.all
+    @deliveries = current_customer.deliveries
   end
 
   def edit
@@ -25,7 +25,7 @@ class Public::DeliveriesController < ApplicationController
   def update
        @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
-      redirect_to public_deliveries_path(@delivery.id)
+      redirect_to public_deliveries_path
     end
   end  
   

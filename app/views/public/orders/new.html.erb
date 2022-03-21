@@ -19,7 +19,7 @@
     <%= f.radio_button :delivery_option, 1 %>
     <%= f.label :delivery_id, "登録済住所から選択", value: 1 %><br>
     
-    <%= f.select :delivery_id, options_from_collection_for_select(Delivery.all, :id, :delivery_display) %><br>
+    <%= f.select :delivery_id, options_from_collection_for_select(current_customer.deliveries, :id, :delivery_display) %><br>
     
     
     

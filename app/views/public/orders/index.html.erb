@@ -1,5 +1,5 @@
 
-
+<div class="container ml-auto">
 <h1>注文履歴一覧</h1>
 
 <table class="table table-bordered">
@@ -15,7 +15,7 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-                <th><%= order.created_at.strftime('%Y/%m/%d') %></th>
+                <th><%= l order.created_at %></th>
                 <td>〒<%= order.postal_code %> <%= order.address %></td>
                 <td>
                  <% order.order_details.each do |order_detail| %>
@@ -29,33 +29,4 @@
             <% end %>
         </tbody>
     </table>
-
-
-
-
-
-
-
- 
- 
- 
- 
- 
- 
- 
-  
- 
- 
- 
-
- 
- 
- 
- 
- 
- 
- <br>
-
- 
- 
- 
+</div>

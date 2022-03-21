@@ -12,7 +12,7 @@
             <%= @order.name %><br>
             <% end %>
             <div class="font-weight-bold">注文日</div>
-            <%= @order.created_at.strftime('%Y/%m/%d') %><br>
+            <%= l @order.created_at %><br>
             
             <div class="font-weight-bold">配送先</div>
             <%= @order.delivery_display %><br>
